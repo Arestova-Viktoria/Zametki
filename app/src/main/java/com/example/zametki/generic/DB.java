@@ -1,5 +1,6 @@
 package com.example.zametki.generic;
 
+import android.annotation.SuppressLint;
 import android.database.Cursor;
 
 import com.example.zametki.Models.Note;
@@ -63,14 +64,15 @@ public class DB {
         return notes;
     }
 
-    public static void UpdateNote(Note note) throws InterruptedException {
+    public static void updateNote(Note note) throws InterruptedException {
         Connections.acquire();
 
-        String query = String.format(
-                "UPDATE notes SET (title, date, description) VALUES ('%s', '%s', '%s')",
+        @SuppressLint("DefaultLocale") String query = String.format(
+                "UPDATE notes SET title = '%s', date = '%s', description = '%s' WHERE id = '%d'",
                 note.title,
                 note.date,
-                note.description
+                note.description,
+                note.id
         );
 
         Registry.DB.execSQL(query);

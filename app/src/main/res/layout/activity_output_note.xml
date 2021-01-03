@@ -2,29 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.CreateActivity">
-
-    <TextView
-        android:id="@+id/textView_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Название"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Дата"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_name" />
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Activities.OutputNoteActivity">
 
     <TextView
         android:id="@+id/textView_note"
@@ -36,4 +17,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_data" />
+
+    <TextView
+        android:id="@+id/textView_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Дата"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_name" />
+
+    <TextView
+        android:id="@+id/textView_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Название"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
