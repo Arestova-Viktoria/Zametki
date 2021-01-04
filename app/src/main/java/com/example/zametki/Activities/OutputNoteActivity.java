@@ -41,8 +41,11 @@ public class OutputNoteActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        name.setText(note.title);
+        data.setText(note.date);
+        descr.setText(note.description);
 
-        List<Note> notes = new ArrayList<>();
+        /*List<Note> notes = new ArrayList<>();
         try {
             notes = DB.getAllNotes();
             name.setText(notes.get(46).title);
@@ -50,7 +53,7 @@ public class OutputNoteActivity extends AppCompatActivity {
             descr.setText(notes.get(46).description);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
         saveThis.setOnClickListener(new View.OnClickListener() {
             @Override
