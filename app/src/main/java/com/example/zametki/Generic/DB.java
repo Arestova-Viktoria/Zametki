@@ -74,6 +74,7 @@ public class DB {
         note.description = result.getString(result.getColumnIndex("description"));
         note.title = result.getString(result.getColumnIndex("title"));
         note.date = result.getString(result.getColumnIndex("date"));
+        note.id = result.getInt(result.getColumnIndex("id"));
 
         Connections.release();
         return note;
@@ -83,10 +84,11 @@ public class DB {
         Connections.acquire();
 
         String query = String.format(
-                "UPDATE notes SET (title, date, description) VALUES ('%s', '%s', '%s')",
+                "UPDATE notes SET title='%s', date='%s', description='%s' WHERE id='%d'",
                 note.title,
                 note.date,
-                note.description
+                note.description,
+                note.id
         );
 
         Registry.DB.execSQL(query);

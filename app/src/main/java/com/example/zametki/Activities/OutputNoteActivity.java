@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +23,7 @@ import java.util.Locale;
 public class OutputNoteActivity extends AppCompatActivity {
     TextView name, data, descr;
     Button saveThis;
+    Note note;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,25 +33,17 @@ public class OutputNoteActivity extends AppCompatActivity {
         descr = findViewById(R.id.textView_note);
         saveThis = findViewById(R.id.button_save);
 
-        Note note = new Note();
         Bundle arguments = getIntent().getExtras();
         if (null != arguments) {
             int id = arguments.getInt("id");
             try {
                 note = DB.getNote(id);
+                name.setText(note.title);
+                data.setText(note.date);
+                descr.setText(note.description);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-
-        List<Note> notes = new ArrayList<>();
-        try {
-            notes = DB.getAllNotes();
-            name.setText(notes.get(46).title);
-            data.setText(notes.get(46).date);
-            descr.setText(notes.get(46).description);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
         saveThis.setOnClickListener(new View.OnClickListener() {
@@ -62,24 +56,21 @@ public class OutputNoteActivity extends AppCompatActivity {
 
                 Note editNote = new Note();
                 editNote.date = dateText;
-
-                EditText txtDescription = (EditText) descr;
-                editNote.description = txtDescription.getText().toString();
-
-                EditText txtName = (EditText) name;
-                editNote.title = txtName.getText().toString();
+                editNote.description = descr.getText().toString();
+                editNote.title = name.getText().toString();
 
                 try {
-                    DB.updateNote(editNote);
+                    if (null != note) {
+                        editNote.id = note.id;
+                        DB.updateNote(editNote);
+                    } else {
+                        DB.addNote(editNote);
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 finish();
             }
         });
-
-
-
     }
-
 }
