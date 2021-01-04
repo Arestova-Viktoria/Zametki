@@ -31,6 +31,17 @@ public class OutputNoteActivity extends AppCompatActivity {
         descr = findViewById(R.id.textView_note);
         saveThis = findViewById(R.id.button_save);
 
+        Note note = new Note();
+        Bundle arguments = getIntent().getExtras();
+        if (null != arguments) {
+            int id = arguments.getInt("id");
+            try {
+                note = DB.getNote(id);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         List<Note> notes = new ArrayList<>();
         try {
             notes = DB.getAllNotes();
