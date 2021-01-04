@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,8 +15,12 @@ import com.example.zametki.R;
 import com.example.zametki.generic.DB;
 import com.example.zametki.generic.Registry;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
+        /*Внести новую строку в базу
         Note first = new Note();
         first.title = "Kit";
         first.date = "10.02.2020";
@@ -41,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        */
         create = findViewById(R.id.button_create);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent cr;
                 cr = new Intent(MainActivity.this, CreateActivity.class);
                 startActivity(cr);
+
             }
         });
         thatNote = findViewById(R.id.note);
