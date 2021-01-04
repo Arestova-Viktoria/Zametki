@@ -18,7 +18,8 @@
             android:id="@+id/textView_n"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_weight="0.75" />
+            android:layout_weight="0.75"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
             android:id="@+id/textView_d"

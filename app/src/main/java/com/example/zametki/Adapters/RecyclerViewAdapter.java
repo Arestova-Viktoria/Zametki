@@ -21,10 +21,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context context;
 
     public RecyclerViewAdapter(Context context, LayoutInflater inflater,
-                                  List<Note> accounts) {
+                                  List<Note> notes) {
         this.context = context;
         this.inflater = inflater;
-        this.notes = accounts;
+        this.notes = notes;
     }
 
     @NonNull

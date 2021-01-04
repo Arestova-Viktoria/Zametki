@@ -63,7 +63,7 @@ public class DB {
         return notes;
     }
 
-    public static void UpdateNote(Note note) throws InterruptedException {
+    public static void updateNote(Note note) throws InterruptedException {
         Connections.acquire();
 
         String query = String.format(
@@ -74,6 +74,14 @@ public class DB {
         );
 
         Registry.DB.execSQL(query);
+
+        Connections.release();
+    }
+
+    public static void drop () throws InterruptedException {
+        Connections.acquire();
+
+        Registry.DB.execSQL("DROP TABLE notes");
 
         Connections.release();
     }
