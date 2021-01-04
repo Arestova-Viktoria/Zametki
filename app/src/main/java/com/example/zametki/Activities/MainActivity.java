@@ -6,21 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.zametki.Models.Note;
 import com.example.zametki.R;
-import com.example.zametki.generic.DB;
-import com.example.zametki.generic.Registry;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import com.example.zametki.Generic.DB;
+import com.example.zametki.Generic.Registry;
 
 public class MainActivity extends AppCompatActivity {
 

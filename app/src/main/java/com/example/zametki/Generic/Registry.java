@@ -1,4 +1,4 @@
-package com.example.zametki.generic;
+package com.example.zametki.Generic;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
