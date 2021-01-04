@@ -63,6 +63,22 @@ public class DB {
         return notes;
     }
 
+    public static Note getNote(int id) throws InterruptedException {
+        Connections.acquire();
+
+        String query = String.format("SELECT * FROM notes WHERE id = '%d'", id);
+        Cursor result = Registry.DB.rawQuery(query, null);
+
+        result.moveToFirst();
+        Note note = new Note();
+        note.description = result.getString(result.getColumnIndex("description"));
+        note.title = result.getString(result.getColumnIndex("title"));
+        note.date = result.getString(result.getColumnIndex("date"));
+
+        Connections.release();
+        return note;
+    }
+
     public static void updateNote(Note note) throws InterruptedException {
         Connections.acquire();
 
@@ -78,11 +94,9 @@ public class DB {
         Connections.release();
     }
 
-    public static void drop () throws InterruptedException {
-        Connections.acquire();
-
-        Registry.DB.execSQL("DROP TABLE notes");
-
-        Connections.release();
+    public static void deleteNote(int id) throws InterruptedException {
+        DB.Connections.acquire();
+        Registry.DB.execSQL(String.format("DELETE FROM notes WHERE id='%d'", id));
+        DB.Connections.release();
     }
 }
